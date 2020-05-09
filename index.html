@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Meal Finder</title>
+</head>
+
+<body>
+  <section class="container">
+    <div class="overlay">
+      <div class="top">
+        <h1><span>Discover</span> The Best Recipes</h1>
+        <div class="form-container">
+          <form class="flex" id="submit">
+            <div class="form-left">
+              <label for="city">Enter Keyword:</label>
+              <input type="text" id="search" placeholder="Search for meals or keywords" />
+              <p>Example: "Steak"</p>
+            </div>
+            input
+            <input type="submit" value="Find Food Now" id="cta-btn" />
+          </form>
+          <button class="random-btn" id="random">
+            <i class="fas fa-random"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="results-container">
+    <div id="result-heading"></div>
+    <div id="meals" class="meals"></div>
+    <div id="single-meal"></div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

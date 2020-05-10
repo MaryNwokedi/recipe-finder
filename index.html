@@ -11,7 +11,7 @@
   <title>Meal Finder</title>
 </head>
 
-<body>
+<body onload="getRandomMeal()">
   <section class="container">
     <div class="overlay">
       <div class="top">
@@ -23,7 +23,6 @@
               <input type="text" id="search" placeholder="Search for meals or keywords" />
               <p>Example: "Steak"</p>
             </div>
-            input
             <input type="submit" value="Find Food Now" id="cta-btn" />
           </form>
           <button class="random-btn" id="random">
@@ -34,12 +33,19 @@
     </div>
   </section>
 
+  <!-----Modal---->
+
   <section class="results-container">
     <div id="result-heading"></div>
     <div id="meals" class="meals"></div>
-    <div id="single-meal"></div>
   </section>
 
+  <div id="modal " class="modal-container">
+    <div class="modal">
+      <div id="single-meal"></div>
+    </div>
+  </div>
+  </div>
   <script src="script.js"></script>
 </body>
 

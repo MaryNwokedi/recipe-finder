@@ -1,9 +1,11 @@
 const search = document.getElementById('search'),
   submit = document.getElementById('submit'),
-  random = document.getElementById('random'),
+  body = document.getElementById('body'),
   mealsEl = document.getElementById('meals'),
   resultHeading = document.getElementById('result-heading'),
   single_mealEl = document.getElementById('single-meal');
+
+
 
 // Search meal and fetch from API
 function searchMeal(e) {
@@ -49,6 +51,7 @@ function searchMeal(e) {
 
 // Fetch meal by ID
 function getMealById(mealID) {
+
   fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`)
     .then(res => res.json())
     .then(data => {
@@ -61,17 +64,27 @@ function getMealById(mealID) {
 // Fetch random meal from API
 function getRandomMeal() {
   // Clear meals and heading
-  mealsEl.innerHTML = '';
+  //mealsEl.innerHTML = '';
   resultHeading.innerHTML = '';
 
-  fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
+
+  fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=beef`)
     .then(res => res.json())
     .then(data => {
-      const meal = data.meals[0];
-
-      addMealToDOM(meal);
-    });
-}
+      mealsEl.innerHTML = data.meals
+        .map(
+          meal => `
+          <div class="meal">
+            <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
+            <div class="meal-info" data-mealID="${meal.idMeal}">
+              <h3>${meal.strMeal}</h3>
+            </div>
+          </div>
+        `
+        )
+        .join('');
+    })
+};
 
 // Add meal to DOM
 function addMealToDOM(meal) {
@@ -87,7 +100,30 @@ function addMealToDOM(meal) {
     }
   }
 
-  single_mealEl.innerHTML = `
+  const myWindow = window.open("", "SingleMeals", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=600,height=600");
+  myWindow.document.write(`
+  <link rel="stylesheet" href="style.css" />
+    <div class="modal">
+     <div class="single-meal">
+      <h1>${meal.strMeal}</h1>
+      <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
+      <div class="single-meal-info">
+       ${meal.strCategory ? `<p>${meal.strCategory}</p>` : ''}
+       ${meal.strArea ? `<p>${meal.strArea}</p>` : ''}
+      </div>
+     <div class="main">
+      <p>${meal.strInstructions}</p>
+      <h2>Ingredients</h2>
+      <ul>
+        ${ingredients.map(ing => `<li>${ing}</li>`).join('')}
+      </ul>
+      </div>
+     </div>
+  </div>`);
+
+
+
+  /*single_mealEl.innerHTML = `
     <div class="single-meal">
       <h1>${meal.strMeal}</h1>
       <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
@@ -103,12 +139,12 @@ function addMealToDOM(meal) {
         </ul>
       </div>
     </div>
-  `;
+  `;*/
 }
 
 // Event listeners
 submit.addEventListener('submit', searchMeal);
-random.addEventListener('click', getRandomMeal);
+//body.addEventListener('load', getRandomMeal);
 
 mealsEl.addEventListener('click', e => {
   const mealInfo = e.path.find(item => {

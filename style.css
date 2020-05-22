@@ -4,6 +4,12 @@
   padding: 0;
 }
 
+:root {
+  --primary: #f89104;
+  --shadow2: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  --shadow1: 0 0 5px 2px rgba(0, 0, 0, 0.4);
+}
+
 body {
   font-family: "Montserrat", sans-serif;
 }
@@ -47,7 +53,7 @@ h1 span::before {
   content: " ";
   position: absolute;
   width: 2em;
-  background: #f89104;
+  background: var(--primary);
   height: 0.2em;
   bottom: 0;
   z-index: -1;
@@ -59,7 +65,7 @@ h1 span::before {
   margin: 1.5em 0 0;
   padding: 2em;
   border-radius: 20px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow2);
   margin-top: 50px;
 }
 
@@ -68,7 +74,7 @@ form {
 }
 
 label {
-  color: #f89104;
+  color: var(--primary);
   font-weight: bold;
   display: block;
   margin-bottom: 1em;
@@ -97,7 +103,7 @@ input[type="text"] {
 }
 
 input[type="submit"] {
-  background-color: #f89104;
+  background-color: var(--primary);
   border: none;
   color: white;
   border-radius: 0.5em;
@@ -120,7 +126,7 @@ input[type="submit"]:hover {
 }
 
 h2 {
-  color: #f89104;
+  color: var(--primary);
   padding: 0 1.5rem;
 }
 
@@ -135,7 +141,7 @@ h2 {
 
 .meal {
   padding: 0.8rem;
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow1);
   overflow: hidden;
 }
 
@@ -155,7 +161,7 @@ h2 {
   margin: 0.5rem 1.5rem 0;
   padding: 0.8rem 0;
   border-radius: 20px;
-  background-color: #f89104;
+  background-color: var(--primary);
   cursor: pointer;
   transition: 0.4s ease;
 }
@@ -182,11 +188,11 @@ h2 {
   font-size: 2em;
   font-weight: bold;
   padding: 0.8rem;
-  color: #f89104;
+  color: var(--primary);
 }
 
 .single-meal img {
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow1);
   border-radius: 2px;
   margin: 1rem auto;
   width: 300px;
@@ -194,7 +200,7 @@ h2 {
 
 .single-meal-info {
   padding: 0.8rem;
-  border: 2px #f89104 dashed;
+  border: 2px var(--primary) dashed;
   border-radius: 5px;
   margin-left: 10rem;
   margin-right: 10rem;
@@ -214,9 +220,9 @@ h2 {
 }
 
 .single-meal ul li {
-  border: 1px solid #f89104;
+  border: 1px solid var(--primary);
   border-radius: 5px;
-  background-color: #f89104;
+  background-color: var(--primary);
   display: inline-block;
   color: white;
   font-size: 12px;
@@ -237,14 +243,6 @@ h2 {
     max-width: 300px;
     margin: 0 auto;
   }
-
-  input[type="submit"] {
-    padding: 0.8em;
-    font-size: 1em;
-    margin-top: 3.6rem;
-    width: 40%
-  }
-
 }
 
 @media only screen and (max-width: 929px) {
@@ -283,46 +281,75 @@ h2 {
 
   input[type="submit"] {
     padding: 0.8em 0.2em;
+  }
+}
 
+/* Large phones to small tablets: from 560px to 729px */
+@media only screen and (max-width: 729px) {
+  .top {
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
   }
 
-
-  /* Small phones to small tablets: from 0px to 729px */
-  @media only screen and (max-width: 729px) {
-    .top {
-      width: 100%;
-      text-align: center;
-      margin-left: 0;
-    }
-
-    .form-container {
-      margin: 0;
-      padding: 2em;
-      border-radius: 0px;
-      width: 100%;
-      margin-top: 20px;
-    }
-
-    .meals {
-      grid-template-columns: 1fr;
-    }
-
-    .meal {
-      max-height: 500px;
-      max-width: 400px;
-      margin: 0 auto;
-    }
-
+  .form-container {
+    margin: 0;
+    padding: 2em;
+    border-radius: 0px;
+    width: 100%;
+    margin-top: 20px;
   }
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-2em);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .meals {
+    grid-template-columns: 1fr;
   }
+
+  .meal {
+    max-height: 500px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+/* Small phones from 0px to 560px */
+@media only screen and (max-width: 560px) {
+  form {
+    display: block;
+  }
+  .form-left {
+    width: 100%;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  input[type="submit"] {
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+
+  .top h1 {
+    font-size: 2rem;
+  }
+
+  h1 span {
+    font-size: 1rem;
+  }
+
+  .form-container {
+    padding: 1em;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-2em);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

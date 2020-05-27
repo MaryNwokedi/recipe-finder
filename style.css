@@ -1,25 +1,33 @@
+/*Variables*/
+:root {
+  --primary: #f89104;
+  --secondary: #ffffff;
+  --shadow2: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  --shadow1: 0 0 5px 2px rgba(0, 0, 0, 0.4);
+}
+
+/*Reset*/
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-:root {
-  --primary: #f89104;
-  --shadow2: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-  --shadow1: 0 0 5px 2px rgba(0, 0, 0, 0.4);
-}
+/*Global*/
 
 body {
   font-family: "Montserrat", sans-serif;
 }
+
+/*Main Styles*/
 
 .container {
   background-image: url("img/hero.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: white;
+  color: var(--secondary);
   text-align: center;
   height: 80vh;
   width: 100%;
@@ -61,7 +69,7 @@ h1 span::before {
 }
 
 .form-container {
-  background-color: white;
+  background-color: var(--secondary);
   margin: 1.5em 0 0;
   padding: 2em;
   border-radius: 20px;
@@ -105,7 +113,7 @@ input[type="text"] {
 input[type="submit"] {
   background-color: var(--primary);
   border: none;
-  color: white;
+  color: var(--secondary);
   border-radius: 0.5em;
   cursor: pointer;
   height: fit-content;
@@ -173,7 +181,7 @@ h2 {
 /*....Popup Open...*/
 
 .modal {
-  background-color: #fff;
+  background-color: var(--secondary);
 }
 
 .single-meal {
@@ -224,7 +232,7 @@ h2 {
   border-radius: 5px;
   background-color: var(--primary);
   display: inline-block;
-  color: white;
+  color: var(--secondary);
   font-size: 12px;
   font-weight: bold;
   padding: 5px;
@@ -310,11 +318,13 @@ h2 {
     margin: 0 auto;
   }
 }
+
 /* Small phones from 0px to 560px */
 @media only screen and (max-width: 560px) {
   form {
     display: block;
   }
+
   .form-left {
     width: 100%;
   }
